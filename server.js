@@ -17,7 +17,7 @@ app.use(express.json());
 app.use(cookieParser("secretcode"));
 
 const DB = process.env.MONGO_URI;
-
+mongoose.set('strictQuery', true)
 mongoose
   .connect(DB, {
     useNewUrlParser: true,
