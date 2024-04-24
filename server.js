@@ -6,7 +6,7 @@ const cookieParser = require("cookie-parser");
 const path = require("path");
 
 // SETUP
-dotenv.config({ path: "./server/config/.env" });
+dotenv.config({ path: "./server/.env" });
 
 const app = express();
 const port = process.env.PORT || 5000;
@@ -16,7 +16,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(cookieParser("secretcode"));
 
-const DB = "mongodb+srv://nikhil:nikhilmishra@cluster0.umrjlz3.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0";
+const DB = process.env.MONGO_URI;
 
 mongoose
   .connect(DB, {
